@@ -21,8 +21,6 @@ TRAIN_IMG_DIR = os.path.join(DATA_ROOT, 'train2017')
 VAL_IMG_DIR = os.path.join(DATA_ROOT, 'val2017')
 TEST_IMG_DIR = os.path.join(DATA_ROOT, 'test2017')
 
-# Annotation JSON files - Ensure this path matches your actual dataset structure
-# Based on your last successful code, it seems 'annotations_trainval2017' is the subfolder.
 CAPTIONS_TRAIN_JSON = os.path.join(DATA_ROOT, 'annotations_trainval2017', 'captions_train2017.json')
 CAPTIONS_VAL_JSON = os.path.join(DATA_ROOT, 'annotations_trainval2017', 'captions_val2017.json')
 INSTANCES_TRAIN_JSON = os.path.join(DATA_ROOT, 'annotations_trainval2017', 'instances_train2017.json')
@@ -32,7 +30,7 @@ INSTANCES_VAL_JSON = os.path.join(DATA_ROOT, 'annotations_trainval2017', 'instan
 GENERATED_IMG_FOLDER = os.path.join(app.root_path, 'static', 'generated_images')
 os.makedirs(GENERATED_IMG_FOLDER, exist_ok=True) # Create the folder if it doesn't exist
 
-# --- 1. Data Loading Utility Functions (From your successful code) ---
+# --- 1. Data Loading Utility Functions
 
 def load_coco_annotations(json_path):
     """Loads COCO annotations using pycocotools.COCO API."""
@@ -161,7 +159,7 @@ def generate_instance_plots():
                         except Exception as e:
                             print(f"  Warning: Could not process segmentation for annotation {ann.get('id')}: {e}")
 
-                # Save the figure to a file
+                # Saving the figure to a file
                 plot_filename = f"instance_plot_{img_id}.png"
                 plot_filepath = os.path.join(GENERATED_IMG_FOLDER, plot_filename)
                 plt.savefig(plot_filepath)
