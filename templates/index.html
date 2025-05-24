@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COCO Dataset Web Explorer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1, h2 { text-align: center; color: #0056b3; }
+        .section { background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; padding: 20px; }
+        .image-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .image-card { border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px; background-color: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.08); width: 300px; text-align: center; }
+        .image-card img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin: 0 auto 10px; }
+        .captions { text-align: left; font-size: 0.9em; color: #666; white-space: pre-wrap; word-break: break-word; }
+        .footer { text-align: center; margin-top: 40px; font-size: 0.8em; color: #888; }
+    </style>
+</head>
+<body>
+    <h1>COCO Dataset Web Explorer</h1>
+
+    <div class="section">
+        <h2>Sample Image Captions</h2>
+        <div class="image-container">
+            {% for item in caption_images %}
+            <div class="image-card">
+                <img src="{{ item.url }}" alt="Caption Image">
+                <p><strong>Captions:</strong></p>
+                <pre class="captions">{{ item.captions }}</pre>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Sample Instance Segmentations</h2>
+        <div class="image-container">
+            {% for image_url in instance_images %}
+            <div class="image-card">
+                <img src="{{ image_url }}" alt="Instance Segmentation Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>This project demonstrates loading and visualizing COCO-like image, caption, and instance segmentation data using pycocotools and Flask.</p>
+    </div>
+</body>
+</html>
